@@ -38,7 +38,7 @@ public class QuerySetter {
 		fields.put(field, value);
 	}
 	
-	public void setQuerySetterInterface(QuerySetterInterface sqlMethod){
+	public void setSqlMethod(QuerySetterInterface sqlMethod){
 		this.sqlMethod = sqlMethod;
 	}
 
