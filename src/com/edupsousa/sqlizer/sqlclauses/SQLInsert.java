@@ -1,9 +1,9 @@
 package com.edupsousa.sqlizer.sqlclauses;
-import java.util.Calendar;
 import java.util.Date;
 
 import com.edupsousa.sqlizer.util.IncompleteQueryException;
 import com.edupsousa.sqlizer.util.QuerySetter;
+import com.edupsousa.sqlizer.util.QuerySetterFieldValuesSql;
 
 
 public class SQLInsert {
@@ -42,7 +42,8 @@ public class SQLInsert {
 		if (into == null || querySet.size() == 0)
 			throw new IncompleteQueryException("A consulta SQLInsert deve especificar a tabela de destino e ao menos 1 campo");
 		
-		String sql = "INSERT INTO " + into + " " + querySet.getFieldValuesSql(); 
+		querySet.setQuerySetterInterface(new QuerySetterFieldValuesSql());
+		String sql = "INSERT INTO " + into + " " + querySet.getSql(); 
 		
 		return sql + ";";
 	}
